@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<database>
+     <Student>
+	 <name>Иванов</name>
+         <birthDate>10.01.2001</birthDate> 		
+         <groupName>13001</groupName> 
+	 <faculty>ECM</faculty> 	
+     </Student>		
+     <Student>
+	 <name>Иванов</name>
+         <birthDate>01.01.1998</birthDate> 		
+         <groupName>13001</groupName> 
+	 <faculty>ECM</faculty> 	
+     </Student>		
+     <Teacher>
+	 <name>Петров</name>
+         <birthDate>01.01.1978</birthDate> 		
+         <subject>Матан</subject>  	
+     </Teacher>		
+     <Teacher>
+	 <name>Сидоров</name>
+         <birthDate>01.12.1965</birthDate> 		
+         <subject>Физика</subject>  	
+     </Teacher>		
+     <Student>
+	 <name>Сидоров</name>
+         <birthDate>11.01.2000</birthDate> 		
+         <groupName>31У</groupName> 
+	 <faculty>ECM</faculty> 	
+     </Student>		
+     <Teacher>
+	 <name>Петров</name>
+         <birthDate>11.12.1973</birthDate> 		
+         <subject>Физика</subject>  	
+     </Teacher>		
+</database>
+
+
