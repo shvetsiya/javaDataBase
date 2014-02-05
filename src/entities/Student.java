@@ -1,6 +1,8 @@
 package entities;
 
-import java.util.Date;
+
+import dto.PersonDTO;
+import dto.StudentDTO;
 
 /*************************************************************************
  *  The class Student contains information about students  
@@ -12,16 +14,11 @@ public class Student extends Person{
 	private String groupName;	
 	private	String faculty;	
 			
-	// construct a new student with given fields
-	public Student() {
-		super();
-	}
-    public Student(String name, Date birthDate, String groupName, String faculty) {
-    	super(name, birthDate);        
-        this.groupName = groupName;        
-        this.faculty = faculty;
-    }
 	
+    public Student(StudentDTO dto) {
+    	fromDTO(dto);
+    }
+	    
     public String getGroupName(){
     	return groupName;    	
     }
@@ -41,6 +38,15 @@ public class Student extends Person{
 	@Override
 	protected String getEntityName() {
 		return NAME;
+	}
+	
+	@Override
+	protected void fromDTO(PersonDTO dto){
+		final StudentDTO s = (StudentDTO)dto;
+		name = s.name;
+		birthDate = s.birthDate;
+		groupName = s.groupName;
+		faculty = s.faculty;
 	}
 	    
     @Override

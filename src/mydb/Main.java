@@ -7,7 +7,6 @@ import java.text.ParseException;
 import java.util.List;
 
 import commands.CommandProcessor;
-
 import entities.Person;
 
 
@@ -15,9 +14,11 @@ public class Main {
 	public static void main(String[] args) throws IOException, ParseException {
 		BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
 		
-		new DBReaderFactory();
-		final DBReaderFactory dbReader = DBReaderFactory.instance;
-		final List<Person> people = dbReader.getReader("xml").readDB();
+		Configuration config = Configuration.instance();
+		config.setReaderType(DBReaderFactory.type.XML);
+		
+		DBReaderFactory dbReader = DBReaderFactory.instance; 
+		final List<Person> people = dbReader.getReader().readDB();
 		
 		
 		final CommandProcessor proc = new CommandProcessor(people);

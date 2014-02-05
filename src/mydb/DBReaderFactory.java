@@ -6,19 +6,17 @@ import java.text.ParseException;
 public class DBReaderFactory {
 	public static enum type{TXT, XML};
 	
-	DBReaderFactory(){};
+	private DBReaderFactory(){};
 	
-	public static DBReaderFactory instance = new DBReaderFactory();
+	public static final DBReaderFactory instance = new DBReaderFactory();
 		
 	private Configuration config = Configuration.instance(); 
 	
-	public Reader getReader(String dbType) throws IOException, ParseException{
+	public Reader getReader() throws IOException, ParseException{
 		//config.setFileName(fileName);
-		if (dbType.equals("txt")) {
-			config.setReaderType(DBReaderFactory.type.TXT);
+		if (config.getReaderType() == type.TXT) {			
 			return new TxtDBReader();
-		}else if (dbType.equals("xml")) {
-			config.setReaderType(DBReaderFactory.type.XML);
+		}else if (config.getReaderType() == type.XML) {			
 			return new XmlDBReader();
 		} else {
 			throw new IOException("Incorrect extension of Data base file!");   

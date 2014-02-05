@@ -3,18 +3,11 @@ package entities;
 import java.util.Calendar;
 import java.util.Date;
 
+import dto.PersonDTO;
+
 public abstract class Person implements Comparable <Person>{	
-	private String name; 
-	private Date birthDate;
-	
-	// construct a new student with given fields
-	public Person() {
-		
-	}
-    public Person(String name, Date birthDate) {
-        this.name = name;        
-        this.birthDate = birthDate;
-    }
+	protected String name; 
+	protected Date birthDate;	    
 	
     public String getName(){
     	return name;
@@ -54,9 +47,14 @@ public abstract class Person implements Comparable <Person>{
 	}
 	
 	protected abstract String getEntityName();
+	
+	protected abstract void fromDTO(PersonDTO dto);
     
     //return a string representation of the invoking object
     public String toString() {
         return name + "\n" + birthDate.toString();
     }
+	
+		
+		
 }

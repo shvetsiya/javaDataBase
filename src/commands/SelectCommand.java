@@ -11,10 +11,8 @@ import commands.FP.Predicate;
 import entities.Person;
 
 public class SelectCommand extends Command {
-	private static final Pattern orderByDatePat = Pattern
-			.compile("order\\s+by\\s+date");
-	private static final Pattern whereNamePat = Pattern
-			.compile("where\\s+name\\s*=\\s*'(.+)'");
+	private static final Pattern orderByDatePat = Pattern.compile("order\\s+by\\s+date");
+	private static final Pattern whereNamePat = Pattern.compile("where\\s+name\\s*=\\s*'(.+)'");
 	private boolean orderByDate;
 	private String whereName;
 	private String entity;

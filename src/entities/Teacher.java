@@ -1,6 +1,8 @@
 package entities;
 
-import java.util.Date;
+
+import dto.PersonDTO;
+import dto.TeacherDTO;
 
 /*************************************************************************
  *  The class Teacher contains information about teachers  
@@ -11,13 +13,9 @@ public class Teacher extends Person{
 	public static final String NAME = "Teacher";
 	private String subject;				
 
-	//construct a new student with given fields
-	public Teacher() {
-		super();
-	}
-	public Teacher(String name, Date birthDate, String subject) {
-		super(name, birthDate);        
-		this.subject = subject;        
+	
+	public Teacher(TeacherDTO dto) {
+		fromDTO(dto);
 	}
 	
 	public String getSubject(){
@@ -38,4 +36,11 @@ public class Teacher extends Person{
 		return super.toString() + "\n" + subject;
 	}
 
+    @Override
+	protected void fromDTO(PersonDTO dto){
+		final TeacherDTO s = (TeacherDTO)dto;
+		name = s.name;
+		birthDate = s.birthDate;
+		subject = s.subject;		
+	}
 }

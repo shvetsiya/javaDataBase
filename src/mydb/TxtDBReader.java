@@ -8,6 +8,8 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+import dto.StudentDTO;
+import dto.TeacherDTO;
 import entities.Person;
 import entities.Student;
 import entities.Teacher;
@@ -41,22 +43,23 @@ public class TxtDBReader implements Reader {
 	}
 
 	private void readStudent() throws IOException, ParseException {
-		final Student student = new Student();
-		student.setName(bufferRead.readLine().trim());
-		student.setBirthDay(config.getDateFormat().parse(bufferRead.readLine().trim()));
-		student.setGroupName(bufferRead.readLine().trim());
-		student.setFaculty(bufferRead.readLine().trim());
-		people.add(student);
+		final StudentDTO dto = new StudentDTO(		
+								   bufferRead.readLine().trim(),
+								   config.getDateFormat().parse(bufferRead.readLine().trim()),
+								   bufferRead.readLine().trim(), 
+								   bufferRead.readLine().trim());
+		
+		people.add(new Student(dto));
 
 		bufferRead.readLine();
 	}
 
 	private void readTeacher() throws IOException, ParseException {
-		final Teacher teacher = new Teacher();
-		teacher.setName(bufferRead.readLine().trim());
-		teacher.setBirthDay(config.getDateFormat().parse(bufferRead.readLine().trim()));
-		teacher.setSubject(bufferRead.readLine().trim());
-		people.add(teacher);
+		final TeacherDTO dto = new TeacherDTO(
+								       bufferRead.readLine().trim(), 
+								       config.getDateFormat().parse(bufferRead.readLine().trim()),
+								       bufferRead.readLine().trim());
+		people.add(new Teacher(dto));
 
 		bufferRead.readLine();
 	}
