@@ -11,8 +11,8 @@ import entities.Person;
 
 public class SelectOrderByCommand extends Command{
 	private final Command select;
-	private static final Pattern orderByDatePat = Pattern.compile("order\\s+by\\s+date");
 	private boolean orderByDate;
+	private static final Pattern orderByDatePat = Pattern.compile("order\\s+by\\s+date");	
 
 	public SelectOrderByCommand(Command select){
 		this.select = select;
@@ -27,6 +27,8 @@ public class SelectOrderByCommand extends Command{
 			final List<String> list = new ArrayList<String>();
 			list.addAll(Arrays.asList(parts));
 					
+			list.remove(0); // select
+			list.remove(0); // Person
 
 			checkOrderByClause(list);
 
@@ -49,6 +51,7 @@ public class SelectOrderByCommand extends Command{
 		List<Person> personList = new ArrayList<Person>();
 		personList.addAll(list);
 		
+		//only the feature of the 'order by date command'
 		if (orderByDate) {
 			Collections.sort(personList);
 		}

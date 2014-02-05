@@ -12,9 +12,9 @@ import entities.Person;
 
 public class SelectWhereCommand extends Command {
 	private final Command select;
-	private static final Pattern whereNamePat = Pattern.compile("where\\s+name\\s*=\\s*'(.+)'");
 	private String whereName;
-	
+	private static final Pattern whereNamePat = Pattern.compile("where\\s+name\\s*=\\s*'(.+)'");
+		
 	public SelectWhereCommand(Command select){
 		this.select = select;
 	}
@@ -27,6 +27,9 @@ public class SelectWhereCommand extends Command {
 			final List<String> list = new ArrayList<String>();
 			list.addAll(Arrays.asList(parts));
 			
+			list.remove(0); // select
+			list.remove(0); // Person
+
 			checkWhereClause(list);
 			
 			return true;
@@ -49,6 +52,7 @@ public class SelectWhereCommand extends Command {
 		List<Person> personList = new ArrayList<Person>();
 		personList.addAll(list);
 
+		//only the feature of the 'where name command'
 		if (whereName != null) {
 			personList = FP.<Person> filter(personList,
 					new Predicate<Person>() {
@@ -60,10 +64,7 @@ public class SelectWhereCommand extends Command {
 		}
 
 		select.run(personList);
-	}
-
-	
-	
+	}	
 }
 
 
