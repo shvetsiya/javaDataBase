@@ -12,7 +12,10 @@ public class CommandProcessor {
 	public CommandProcessor(List<Person> people){
 		this.people = people;
 		commandList = new ArrayList<Command>();
-		commandList.add(new SelectCommand());
+		//commandList.add(new SelectOrderByCommand(new SelectWhereCommand(new SelectCommand())));
+		commandList.add(new SelectOrderByCommand(
+						new SelectWhereCommand(
+						new SelectCommand())));
 		commandList.add(new AgeCommand());
 		commandList.add(new CountCommand());
 	}
